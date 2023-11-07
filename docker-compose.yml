@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/images/app/Dockerfile
+    ports:
+      - '3150:3150'
+    depends_on:
+      - db
+    environment:
+      - PORT=3000
+      - ENVIRONMENT=DEV
+      - NODE_ENV=production
+      - PGHOST=db
+      - PGUSER=postgres
+      - DATABASE_URL=${DATABASE_URL}
+
+  db:
+    image: postgres:12.1
+    ports:
+      - '5400:5432'
