@@ -1,1 +1,2 @@
-export { insertAdvice } from './model';
+export { insertAdvice } from './db/model';
+export { fetchAdvice } from './api/apiClient';
